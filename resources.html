@@ -7,96 +7,436 @@
     <title>Resources - JKV Creators Financial</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .filter-btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .platform-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .platform-link:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        .platform-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            flex: 1;
+        }
+        .platform-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        .platform-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
                 <h1 class="logo"><a href="index.html" style="color: white; text-decoration: none;">JKV Creators Financial</a></h1>
+                <div class="nav-links">
+                    <a href="calculator.html" class="nav-link">Calculator</a>
+                    <a href="index.html" class="nav-link">Home</a>
+                </div>
             </div>
         </nav>
     </header>
 
     <main class="container">
         <section class="hero">
-            <h2>🔗 Recommended Platforms</h2>
-            <p>Start earning with these trusted platforms</p>
+            <h2>🔗 Earning Platforms Directory</h2>
+            <p>50+ trusted platforms to start earning money today</p>
         </section>
 
+        <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterCategory('all')">All Platforms</button>
+            <button class="filter-btn" onclick="filterCategory('freelance')">Freelancing</button>
+            <button class="filter-btn" onclick="filterCategory('content')">Content</button>
+            <button class="filter-btn" onclick="filterCategory('courses')">Courses</button>
+            <button class="filter-btn" onclick="filterCategory('ecommerce')">E-commerce</button>
+            <button class="filter-btn" onclick="filterCategory('stock')">Stock Media</button>
+        </div>
+
         <section class="earning-methods">
-            <div class="card">
+            <!-- Freelancing Platforms -->
+            <div class="card" data-category="freelance">
                 <h3>💼 Freelancing Platforms</h3>
-                <ul>
-                    <li><a href="https://fiverr.com" target="_blank">Fiverr</a> - Sell services starting at $5</li>
-                    <li><a href="https://upwork.com" target="_blank">Upwork</a> - Professional freelancing</li>
-                    <li><a href="https://freelancer.com" target="_blank">Freelancer</a> - Global marketplace</li>
-                    <li><a href="https://toptal.com" target="_blank">Toptal</a> - Top 3% talent</li>
-                </ul>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://fiverr.com" target="_blank">Fiverr</a>
+                        <div class="platform-desc">Sell services starting at $5 - Great for beginners</div>
+                    </div>
+                    <span class="platform-badge">Popular</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://upwork.com" target="_blank">Upwork</a>
+                        <div class="platform-desc">Professional freelancing marketplace - Higher rates</div>
+                    </div>
+                    <span class="platform-badge">Pro</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://freelancer.com" target="_blank">Freelancer</a>
+                        <div class="platform-desc">Global marketplace with contests & projects</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://toptal.com" target="_blank">Toptal</a>
+                        <div class="platform-desc">Top 3% talent - Premium rates ($100+/hr)</div>
+                    </div>
+                    <span class="platform-badge">Premium</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://guru.com" target="_blank">Guru</a>
+                        <div class="platform-desc">Flexible work agreements & safe payments</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://peopleperhour.com" target="_blank">PeoplePerHour</a>
+                        <div class="platform-desc">UK-based freelancing platform</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>📚 Course Platforms</h3>
-                <ul>
-                    <li><a href="https://teachable.com" target="_blank">Teachable</a> - Create & sell courses</li>
-                    <li><a href="https://udemy.com" target="_blank">Udemy</a> - Massive student base</li>
-                    <li><a href="https://skillshare.com" target="_blank">Skillshare</a> - Creative courses</li>
-                    <li><a href="https://gumroad.com" target="_blank">Gumroad</a> - Digital products</li>
-                </ul>
+            <!-- Course Platforms -->
+            <div class="card" data-category="courses">
+                <h3>📚 Course & Education Platforms</h3>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://teachable.com" target="_blank">Teachable</a>
+                        <div class="platform-desc">Create & sell courses - Easy setup, 5% fee</div>
+                    </div>
+                    <span class="platform-badge">Recommended</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://udemy.com" target="_blank">Udemy</a>
+                        <div class="platform-desc">Massive student base - 50M+ learners</div>
+                    </div>
+                    <span class="platform-badge">Popular</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://skillshare.com" target="_blank">Skillshare</a>
+                        <div class="platform-desc">Creative courses - Earn per watch minute</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://thinkific.com" target="_blank">Thinkific</a>
+                        <div class="platform-desc">Course platform with marketing tools</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://podia.com" target="_blank">Podia</a>
+                        <div class="platform-desc">Courses, memberships & digital downloads</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://kajabi.com" target="_blank">Kajabi</a>
+                        <div class="platform-desc">All-in-one platform for creators</div>
+                    </div>
+                    <span class="platform-badge">Premium</span>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>🎥 Content Platforms</h3>
-                <ul>
-                    <li><a href="https://youtube.com" target="_blank">YouTube</a> - Video monetization</li>
-                    <li><a href="https://patreon.com" target="_blank">Patreon</a> - Membership platform</li>
-                    <li><a href="https://substack.com" target="_blank">Substack</a> - Newsletter monetization</li>
-                    <li><a href="https://medium.com" target="_blank">Medium</a> - Writing platform</li>
-                </ul>
+            <!-- Content Platforms -->
+            <div class="card" data-category="content">
+                <h3>🎥 Content & Creator Platforms</h3>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://youtube.com/creators" target="_blank">YouTube Partner Program</a>
+                        <div class="platform-desc">Video monetization - Ad revenue & memberships</div>
+                    </div>
+                    <span class="platform-badge">Top Choice</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://patreon.com" target="_blank">Patreon</a>
+                        <div class="platform-desc">Membership platform - Recurring revenue</div>
+                    </div>
+                    <span class="platform-badge">Popular</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://substack.com" target="_blank">Substack</a>
+                        <div class="platform-desc">Newsletter monetization - 10% fee</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://medium.com/creators" target="_blank">Medium Partner Program</a>
+                        <div class="platform-desc">Writing platform - Earn per read</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://twitch.tv" target="_blank">Twitch</a>
+                        <div class="platform-desc">Live streaming - Subs, bits & donations</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://ko-fi.com" target="_blank">Ko-fi</a>
+                        <div class="platform-desc">Tips & memberships - 0% platform fee</div>
+                    </div>
+                    <span class="platform-badge">0% Fee</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://buymeacoffee.com" target="_blank">Buy Me a Coffee</a>
+                        <div class="platform-desc">Simple tipping & memberships</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>🛍️ E-commerce</h3>
-                <ul>
-                    <li><a href="https://shopify.com" target="_blank">Shopify</a> - Online store</li>
-                    <li><a href="https://etsy.com" target="_blank">Etsy</a> - Handmade & digital</li>
-                    <li><a href="https://redbubble.com" target="_blank">Redbubble</a> - Print on demand</li>
-                    <li><a href="https://teespring.com" target="_blank">Teespring</a> - Merch platform</li>
-                </ul>
+            <!-- E-commerce -->
+            <div class="card" data-category="ecommerce">
+                <h3>🛍️ E-commerce & Digital Products</h3>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://gumroad.com" target="_blank">Gumroad</a>
+                        <div class="platform-desc">Digital products - Simple & creator-friendly</div>
+                    </div>
+                    <span class="platform-badge">Easy Start</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://shopify.com" target="_blank">Shopify</a>
+                        <div class="platform-desc">Full online store - Physical & digital products</div>
+                    </div>
+                    <span class="platform-badge">Popular</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://etsy.com" target="_blank">Etsy</a>
+                        <div class="platform-desc">Handmade, vintage & digital goods</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://redbubble.com" target="_blank">Redbubble</a>
+                        <div class="platform-desc">Print-on-demand - No upfront costs</div>
+                    </div>
+                    <span class="platform-badge">POD</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://teespring.com" target="_blank">Teespring (Spring)</a>
+                        <div class="platform-desc">Merch platform for creators</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://printful.com" target="_blank">Printful</a>
+                        <div class="platform-desc">Print-on-demand fulfillment</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://lemonsqueezy.com" target="_blank">Lemon Squeezy</a>
+                        <div class="platform-desc">Digital products with tax handling</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>📸 Stock Content</h3>
-                <ul>
-                    <li><a href="https://shutterstock.com" target="_blank">Shutterstock</a> - Photos & videos</li>
-                    <li><a href="https://adobe.com/stock" target="_blank">Adobe Stock</a> - Creative assets</li>
-                    <li><a href="https://pond5.com" target="_blank">Pond5</a> - Video marketplace</li>
-                    <li><a href="https://creativemarket.com" target="_blank">Creative Market</a> - Design assets</li>
-                </ul>
+            <!-- Stock Content -->
+            <div class="card" data-category="stock">
+                <h3>📸 Stock Media & Creative Assets</h3>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://shutterstock.com/contributor" target="_blank">Shutterstock</a>
+                        <div class="platform-desc">Photos, videos, music - Large marketplace</div>
+                    </div>
+                    <span class="platform-badge">Top Earner</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://stock.adobe.com/contributor" target="_blank">Adobe Stock</a>
+                        <div class="platform-desc">Creative assets - Premium rates</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://pond5.com" target="_blank">Pond5</a>
+                        <div class="platform-desc">Video marketplace - High commissions</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://creativemarket.com" target="_blank">Creative Market</a>
+                        <div class="platform-desc">Design assets, fonts, templates</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://envato.com" target="_blank">Envato Market</a>
+                        <div class="platform-desc">Themes, plugins, graphics, music</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://istockphoto.com" target="_blank">iStock</a>
+                        <div class="platform-desc">Stock photos & illustrations</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>💰 Affiliate Programs</h3>
-                <ul>
-                    <li><a href="https://amazon.com/associates" target="_blank">Amazon Associates</a> - Product affiliate</li>
-                    <li><a href="https://cj.com" target="_blank">CJ Affiliate</a> - Major brands</li>
-                    <li><a href="https://shareasale.com" target="_blank">ShareASale</a> - Diverse merchants</li>
-                    <li><a href="https://clickbank.com" target="_blank">ClickBank</a> - Digital products</li>
-                </ul>
+            <!-- Affiliate Programs -->
+            <div class="card" data-category="all">
+                <h3>💰 Affiliate Marketing Programs</h3>
+                
+                <div class="platform-link">
+                    <div>
+                        <a href="https://affiliate-program.amazon.com" target="_blank">Amazon Associates</a>
+                        <div class="platform-desc">Product affiliate - 1-10% commission</div>
+                    </div>
+                    <span class="platform-badge">Beginner Friendly</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://cj.com" target="_blank">CJ Affiliate</a>
+                        <div class="platform-desc">Major brands - High commissions</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://shareasale.com" target="_blank">ShareASale</a>
+                        <div class="platform-desc">Diverse merchants - Easy approval</div>
+                    </div>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://clickbank.com" target="_blank">ClickBank</a>
+                        <div class="platform-desc">Digital products - 50-75% commissions</div>
+                    </div>
+                    <span class="platform-badge">High %</span>
+                </div>
+
+                <div class="platform-link">
+                    <div>
+                        <a href="https://impact.com" target="_blank">Impact</a>
+                        <div class="platform-desc">Partnership automation platform</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="cta">
-            <h3>Start Your Journey Today!</h3>
-            <p><a href="index.html" style="color: white;">← Back to Earning Methods</a></p>
+            <h3>Ready to Start?</h3>
+            <p>Pick 2-3 platforms and focus on mastering them first!</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="calculator.html" class="cta-button">Calculate Income 💵</a>
+                <a href="index.html" class="cta-button">← Back to Methods</a>
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2025 JKV Creators Financial. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <a href="index.html" style="color: #667eea;">Home</a> | 
+                <a href="calculator.html" style="color: #667eea;">Calculator</a>
+            </p>
         </div>
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
