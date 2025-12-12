@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4F46E5">
+    <title>Income Calculator - JKV Creators Financial</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calculator {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .calc-input {
+            margin: 1.5rem 0;
+        }
+        .calc-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        .calc-input input, .calc-input select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .calc-input input:focus, .calc-input select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .calc-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .calc-button:hover {
+            transform: scale(1.02);
+        }
+        .result {
+            background: #f0f4ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo"><a href="index.html" style="color: white; text-decoration: none;">JKV Creators Financial</a></h1>
+                <div class="nav-links">
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>💵 Income Calculator</h2>
+            <p>Calculate your potential monthly earnings</p>
+        </section>
+
+        <div class="calculator">
+            <div class="calc-input">
+                <label>Income Source</label>
+                <select id="incomeSource">
+                    <option value="youtube">YouTube (per 1000 views)</option>
+                    <option value="freelance">Freelancing (hourly)</option>
+                    <option value="course">Online Course (per sale)</option>
+                    <option value="affiliate">Affiliate Marketing (per sale)</option>
+                    <option value="patreon">Patreon (per member)</option>
+                </select>
+            </div>
+
+            <div class="calc-input">
+                <label id="rateLabel">Rate per Unit ($)</label>
+                <input type="number" id="rate" placeholder="e.g., 5" min="0" step="0.01">
+            </div>
+
+            <div class="calc-input">
+                <label id="volumeLabel">Monthly Volume</label>
+                <input type="number" id="volume" placeholder="e.g., 10000" min="0">
+            </div>
+
+            <div class="calc-input">
+                <label>Platform Fee (%)</label>
+                <input type="number" id="fee" placeholder="e.g., 30" min="0" max="100" value="30">
+            </div>
+
+            <button class="calc-button" onclick="calculate()">Calculate Income</button>
+
+            <div class="result" id="result">
+                <h3>📊 Your Potential Earnings</h3>
+                <div class="result-item">
+                    <span>Gross Income:</span>
+                    <span id="grossIncome">$0</span>
+                </div>
+                <div class="result-item">
+                    <span>Platform Fees:</span>
+                    <span id="platformFees">$0</span>
+                </div>
+                <div class="result-item">
+                    <span>Net Monthly Income:</span>
+                    <span id="netIncome">$0</span>
+                </div>
+                <div class="result-item">
+                    <span>Annual Projection:</span>
+                    <span id="annualIncome">$0</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="earning-methods" style="margin-top: 3rem;">
+            <div class="card">
+                <h3>💡 Tips to Maximize Earnings</h3>
+                <ul>
+                    <li>Diversify income streams</li>
+                    <li>Build email list for direct sales</li>
+                    <li>Create evergreen content</li>
+                    <li>Automate where possible</li>
+                    <li>Reinvest in growth</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JKV Creators Financial. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <a href="index.html" style="color: #667eea;">Home</a> | 
+                <a href="resources.html" style="color: #667eea;">Resources</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        function calculate() {
+            const rate = parseFloat(document.getElementById('rate').value) || 0;
+            const volume = parseFloat(document.getElementById('volume').value) || 0;
+            const fee = parseFloat(document.getElementById('fee').value) || 0;
+
+            const gross = rate * volume;
+            const fees = gross * (fee / 100);
+            const net = gross - fees;
+            const annual = net * 12;
+
+            document.getElementById('grossIncome').textContent = '$' + gross.toFixed(2);
+            document.getElementById('platformFees').textContent = '-$' + fees.toFixed(2);
+            document.getElementById('netIncome').textContent = '$' + net.toFixed(2);
+            document.getElementById('annualIncome').textContent = '$' + annual.toFixed(2);
+
+            document.getElementById('result').classList.add('show');
+        }
+
+        // Update labels based on income source
+        document.getElementById('incomeSource').addEventListener('change', function() {
+            const source = this.value;
+            const rateLabel = document.getElementById('rateLabel');
+            const volumeLabel = document.getElementById('volumeLabel');
+
+            switch(source) {
+                case 'youtube':
+                    rateLabel.textContent = 'CPM Rate ($)';
+                    volumeLabel.textContent = 'Monthly Views (in thousands)';
+                    break;
+                case 'freelance':
+                    rateLabel.textContent = 'Hourly Rate ($)';
+                    volumeLabel.textContent = 'Monthly Hours';
+                    break;
+                case 'course':
+                    rateLabel.textContent = 'Course Price ($)';
+                    volumeLabel.textContent = 'Monthly Sales';
+                    break;
+                case 'affiliate':
+                    rateLabel.textContent = 'Commission per Sale ($)';
+                    volumeLabel.textContent = 'Monthly Sales';
+                    break;
+                case 'patreon':
+                    rateLabel.textContent = 'Average Tier Price ($)';
+                    volumeLabel.textContent = 'Number of Members';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
